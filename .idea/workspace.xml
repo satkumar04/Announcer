@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e5dc122d-a2bc-4dfd-bad4-60c29e15162c" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5_API_23" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ESANLocationScanner" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ESANLocationScanner" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ESANLocationScanner" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ESANLocationScanner" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="android" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ESANLocationScanner" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="layoutResourceFile_vertical" />
+        <option value="Class" />
+        <option value="layoutResourceFile" />
+      </list>
+    </option>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/app/keystoreinfo/sanble.jks" />
+    <option name="KEY_ALIAS" value="blekey" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Test" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/main" />
+    <option name="ROOT_SYNC" value="SYNC" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="ProjectId" id="1k18EdEDZ1dxn1obZVGgJGeFlEl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ApkExportedModule" value="app" />
+    <property name="DEBUGGABLE_DEVICE" value="xiaomi-mi_a1-a8de9bf60504" />
+    <property name="DEBUGGABLE_PROCESS" value="com.sansolutions.esanlocationscanner" />
+    <property name="DEBUGGER_ID" value="Auto" />
+    <property name="ExportApk.ApkPath" value="$USER_HOME$/Desktop/san/location/nov23" />
+    <property name="ExportApk.BuildVariants" value="release" />
+    <property name="ExportApk.SignV1" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="android.sdk.path" value="C:/rajeevtomar/Arun SDK/android-sdks" />
+    <property name="device.picker.selection" value="69482c19" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SAN_NEW/ESANLocationScanner" />
+    <property name="not.eligible.for.single.variant.sync" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.sansolutions.esanlocationscanner" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.sansolutions.esanlocationscanner" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sansolutions" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/sansolutions/esanlocationscanner/adapters" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Android App.app">
+    <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ESANLocationScanner:app [signingReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="signingReport" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.ESANLocationScanner:app [signingReport]" />
+        <item itemvalue="Gradle.ESANLocationScanner:app [signingReport]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e5dc122d-a2bc-4dfd-bad4-60c29e15162c" name="Default Changelist" comment="" />
+      <created>1564944722498</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1564944722498</updated>
+    </task>
+    <task id="LOCAL-00001" summary="version changes">
+      <created>1606196582136</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606196582136</updated>
+    </task>
+    <task id="LOCAL-00002" summary="version changes to 1.2">
+      <created>1606197023900</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606197023900</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+      <path value="$PROJECT_DIR$/main" />
+    </ignored-roots>
+    <MESSAGE value="version changes" />
+    <MESSAGE value="version changes to 1.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="version changes to 1.2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="563" y="323" width="540" height="290" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1605063928336">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="563" y="323" width="540" height="290" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/67.27.1533.873@67.27.1533.873" timestamp="1605063928336" />
+    <state x="566" y="211" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605023008619">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="566" y="211" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1533.873@67.27.1533.873" timestamp="1605023008619" />
+    <state x="415" y="208" width="826" height="509" key="#xdebugger.evaluate" timestamp="1605842425887">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="415" y="208" width="826" height="509" key="#xdebugger.evaluate/67.27.1533.873@67.27.1533.873" timestamp="1605842425887" />
+    <state x="416" y="220" width="824" height="484" key="AndroidCreateResourceFileDialog" timestamp="1605025783790">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="416" y="220" width="824" height="484" key="AndroidCreateResourceFileDialog/67.27.1533.873@67.27.1533.873" timestamp="1605025783790" />
+    <state x="679" y="230" width="299" height="465" key="AndroidProcessChooserDialog" timestamp="1606195359021">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="679" y="230" width="299" height="465" key="AndroidProcessChooserDialog/67.27.1533.873@67.27.1533.873" timestamp="1606195359021" />
+    <state x="402" y="34" width="853" height="856" key="CommitChangelistDialog2" timestamp="1606197023548">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="402" y="34" width="853" height="856" key="CommitChangelistDialog2/67.27.1533.873@67.27.1533.873" timestamp="1606197023548" />
+    <state width="560" height="478" key="DebuggerActiveHint" timestamp="1605842733177">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="560" height="478" key="DebuggerActiveHint/67.27.1533.873@67.27.1533.873" timestamp="1605842733177" />
+    <state x="611" y="220" width="472" height="484" key="FileChooserDialogImpl" timestamp="1606201645547">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="611" y="220" width="472" height="484" key="FileChooserDialogImpl/67.27.1533.873@67.27.1533.873" timestamp="1606201645547" />
+    <state width="1487" height="262" key="GridCell.Tab.0.bottom" timestamp="1606196716795">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="1487" height="262" key="GridCell.Tab.0.bottom/67.27.1533.873@67.27.1533.873" timestamp="1606196716795" />
+    <state width="1487" height="262" key="GridCell.Tab.0.center" timestamp="1606196716794">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="1487" height="262" key="GridCell.Tab.0.center/67.27.1533.873@67.27.1533.873" timestamp="1606196716794" />
+    <state width="1487" height="262" key="GridCell.Tab.0.left" timestamp="1606196716794">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="1487" height="262" key="GridCell.Tab.0.left/67.27.1533.873@67.27.1533.873" timestamp="1606196716794" />
+    <state width="1487" height="262" key="GridCell.Tab.0.right" timestamp="1606196716795">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="1487" height="262" key="GridCell.Tab.0.right/67.27.1533.873@67.27.1533.873" timestamp="1606196716795" />
+    <state x="322" y="97" key="SettingsEditor" timestamp="1606202109663">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="322" y="97" key="SettingsEditor/67.27.1533.873@67.27.1533.873" timestamp="1606202109663" />
+    <state x="562" y="196" width="639" height="524" key="StructurePopup" timestamp="1605532499423">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="562" y="196" width="639" height="524" key="StructurePopup/67.27.1533.873@67.27.1533.873" timestamp="1605532499423" />
+    <state x="428" y="198" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606200067111">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="428" y="198" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1533.873@67.27.1533.873" timestamp="1606200067111" />
+    <state x="605" y="242" width="446" height="440" key="chooseDestDirectoryDialog" timestamp="1605364845892">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="605" y="242" width="446" height="440" key="chooseDestDirectoryDialog/67.27.1533.873@67.27.1533.873" timestamp="1605364845892" />
+    <state x="167" y="125" width="1333" height="675" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1606195086437">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="167" y="125" width="1333" height="675" key="com.intellij.history.integration.ui.views.FileHistoryDialog/67.27.1533.873@67.27.1533.873" timestamp="1606195086437" />
+    <state x="167" y="125" width="1333" height="691" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1605856893539">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="167" y="125" width="1333" height="691" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/67.27.1533.873@67.27.1533.873" timestamp="1605856893539" />
+    <state x="489" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1606202074917">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="489" y="290" key="com.intellij.ide.util.TipDialog/67.27.1533.873@67.27.1533.873" timestamp="1606202074917" />
+    <state x="601" y="382" width="464" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606200081548">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="601" y="382" width="464" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1533.873@67.27.1533.873" timestamp="1606200081548" />
+    <state x="361" y="181" width="934" height="562" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1605842265880">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="361" y="181" width="934" height="562" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/67.27.1533.873@67.27.1533.873" timestamp="1605842265880" />
+    <state x="485" y="201" width="786" height="522" key="find.popup" timestamp="1605802709528">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="485" y="201" width="786" height="522" key="find.popup/67.27.1533.873@67.27.1533.873" timestamp="1605802709528" />
+    <state x="490" y="256" width="676" height="413" key="git4idea.merge.GitPullDialog" timestamp="1606198866549">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="490" y="256" width="676" height="413" key="git4idea.merge.GitPullDialog/67.27.1533.873@67.27.1533.873" timestamp="1606198866549" />
+    <state x="518" y="359" width="620" height="207" key="git4idea.ui.GitResetDialog" timestamp="1606198922261">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="518" y="359" width="620" height="207" key="git4idea.ui.GitResetDialog/67.27.1533.873@67.27.1533.873" timestamp="1606198922261" />
+    <state width="359" height="73" key="javadoc.popup.new" timestamp="1606117359532">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state width="359" height="73" key="javadoc.popup.new/67.27.1533.873@67.27.1533.873" timestamp="1606117359532" />
+    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup" timestamp="1606194831146">
+      <screen x="67" y="27" width="1533" height="873" />
+    </state>
+    <state x="496" y="212" width="672" height="678" key="search.everywhere.popup/67.27.1533.873@67.27.1533.873" timestamp="1606194831146" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/sansolutions/esanlocationscanner/StoredBLEActivityList.kt</url>
+          <line>36</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/sansolutions/esanlocationscanner/StoredBLEActivityList.kt</url>
+          <line>66</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/sansolutions/esanlocationscanner/HomeLocationActivity.java</url>
+          <line>500</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/sansolutions/esanlocationscanner/HomeLocationActivity.java</url>
+          <line>484</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/sansolutions/esanlocationscanner/HomeLocationActivity.java</url>
+          <line>423</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/sansolutions/esanlocationscanner/HomeLocationActivity.java</url>
+          <line>481</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/sansolutions/esanlocationscanner/HomeLocationActivity.java</url>
+          <line>491</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

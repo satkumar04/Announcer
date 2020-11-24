@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:background="@android:color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/activity_main" android:orientation="vertical">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:visibility="gone"
+        android:id="@+id/default_configuration_layout"
+        android:background="#00BFFF"
+        android:orientation="vertical">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:layout_gravity="center_horizontal"
+                      android:gravity="center_horizontal"
+                      android:textStyle="bold"
+                      android:textSize="25dp"
+                      android:text="Default Configuration"
+                      android:textColor="@android:color/black"/>
+
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                          android:text="Name Prefix"
+                          android:textColor="@android:color/black"/>
+
+                <EditText android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:id="@+id/prefixName"
+                          android:layout_marginLeft="25dp"
+                          android:hint="Enter BLE Prefix Name"
+                          android:textColorHint="@android:color/black"
+                          android:textColor="@android:color/black"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_margin="10dp"
+                          android:orientation="horizontal">
+
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:text="Enter Locations"
+                          android:textColor="@android:color/black"/>
+
+                <EditText android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:inputType="number"
+                          android:id="@+id/location_numbers"
+                          android:layout_marginLeft="25dp"
+                          android:hint="Enter Location Numbers"
+                          android:textColorHint="@android:color/black"
+                          android:textColor="@android:color/black"/>
+
+
+            </LinearLayout>
+
+            <Button
+                    android:layout_margin="25dp"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:id="@+id/btnEnter"
+            android:text="Submit"/>
+
+        </LinearLayout>
+
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_weight="1"
+                  android:text="Read Distance"
+                    android:textSize="20dp"
+                  android:layout_gravity="center_horizontal"
+                  android:gravity="center_horizontal"
+                  android:textStyle="bold"
+                  android:id="@+id/readdistance"
+                  android:textColor="@android:color/white"/>
+
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:id="@+id/editTextContainer"
+        android:orientation="vertical"></LinearLayout>
+
+        <Button
+               android:padding="10dp"
+               android:visibility="gone"
+                android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+                android:id="@+id/btnShow"
+                android:text="Add Devices"/>
+    </LinearLayout>
+
+</ScrollView>
