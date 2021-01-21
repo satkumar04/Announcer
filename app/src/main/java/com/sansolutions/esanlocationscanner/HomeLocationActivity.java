@@ -6,11 +6,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.*;
 import android.provider.Settings;
 import android.util.Log;
@@ -45,6 +47,7 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -88,6 +91,10 @@ public class HomeLocationActivity extends AppCompatActivity
     private AudioManager audioManager;
     private int volume = 5;
     private ImageView volumeView;
+    VideoView vid;
+    LinearLayout llMain, llVideo;
+    int index = 0;
+    ArrayList<String> arrayList = new ArrayList<>(Arrays.asList("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
 
     public static String getDistance(LatLng latlngA, LatLng latlngB) {
         Location locationA = new Location("point A");
@@ -117,7 +124,7 @@ public class HomeLocationActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landscape_home_screen);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
         PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "ESANGEOBLEScanner::WAKELOCK");
@@ -138,6 +145,9 @@ public class HomeLocationActivity extends AppCompatActivity
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         startImageView = findViewById(R.id.start_button);
         volumeView = findViewById(R.id.volume_button);
+        vid = (VideoView) findViewById(R.id.videoView);
+        llMain = (LinearLayout) findViewById(R.id.llMain);
+        llVideo = (LinearLayout) findViewById(R.id.llVideo);
 
         volumeView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,6 +159,11 @@ public class HomeLocationActivity extends AppCompatActivity
         startImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                llMain.setVisibility(View.GONE);
+                llVideo.setVisibility(View.VISIBLE);
+
+                playVideo();
+                // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 new Thread(new ClientThread("", emptyLocMode)).start();
 
                 if (!scanning) {
@@ -509,7 +524,7 @@ public class HomeLocationActivity extends AppCompatActivity
                             }
                         }
                         isStartPressed = false;
-                       // Toast.makeText(this,"Set the location",Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(this,"Set the location",Toast.LENGTH_SHORT).show();
                     } else if (currentDistance < Float.parseFloat(bleEntity.getArrivedmeters()) && !bleDao.getDeviceDetails(bleEntity.getLocationname()).isArrived()) {                        // here play arrived audio and LED display
                         if (!isMediaPlaying) {
                             playMedia(bleEntity.getLocationname(), arrivedLocMode, true);
@@ -846,7 +861,55 @@ public class HomeLocationActivity extends AppCompatActivity
         }
     }
 
+    public void playVideo() {
 
+        final MediaController mediacontroller = new MediaController(this);
+        mediacontroller.setAnchorView(vid);
+
+
+        vid.setMediaController(mediacontroller);
+        vid.setVideoURI(Uri.parse(arrayList.get(index)));
+
+        vid.requestFocus();
+        vid.start();
+        vid.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                Toast.makeText(getApplicationContext(), "Video over", Toast.LENGTH_SHORT).show();
+                if (index++ == arrayList.size()) {
+                    index = 0;
+                    mp.release();
+                    Toast.makeText(getApplicationContext(), "Video over", Toast.LENGTH_SHORT).show();
+                } else {
+                    vid.setVideoURI(Uri.parse(arrayList.get(index)));
+                    vid.start();
+                }
+
+
+            }
+        });
+
+        vid.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(MediaPlayer mp, int what, int extra) {
+                Log.d("API123", "What " + what + " extra " + extra);
+                return false;
+            }
+        });
+
+
+       /* MediaController m = new MediaController(this);
+        vid.setMediaController(m);
+
+        String path = "android.resource://com.sansolutions.esanlocationscanner/"+R.raw.small;
+
+        Uri u = Uri.parse(path);
+
+        vid.setVideoURI(u);
+
+        vid.start();*/
+
+    }
 }
 
 
