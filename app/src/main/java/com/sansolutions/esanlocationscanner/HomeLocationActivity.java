@@ -2,12 +2,19 @@ package com.sansolutions.esanlocationscanner;
 
 
 import android.Manifest;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Point;
 import android.location.Location;
 import android.location.LocationManager;
 import android.media.AudioManager;
@@ -16,15 +23,21 @@ import android.net.Uri;
 import android.os.*;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.view.animation.TranslateAnimation;
+import android.webkit.URLUtil;
 import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -38,23 +51,43 @@ import com.google.android.gms.maps.model.LatLng;
 import com.sansolutions.esanblescanner.db.DatabaseHandler;
 import com.sansolutions.esanlocationscanner.db.LocationDAO;
 import com.sansolutions.esanlocationscanner.db.LocationEntity;
+import com.sansolutions.esanlocationscanner.db.VideoFileModel;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 public class HomeLocationActivity extends AppCompatActivity
         implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
-
+    private String TAG = HomeLocationActivity.class.getCanonicalName();
     public static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 1989;
     public static final String MyPREFERENCES = "MyCredential";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
@@ -93,8 +126,16 @@ public class HomeLocationActivity extends AppCompatActivity
     private ImageView volumeView;
     VideoView vid;
     LinearLayout llMain, llVideo;
+    ConstraintLayout ClVideo;
     int index = 0;
+    Timer timer;
+    private int shortAnimationDuration;
+    MyTimerTask myTimerTask;
     ArrayList<String> arrayList = new ArrayList<>(Arrays.asList("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+    private List<VideoFileModel> videoList = new ArrayList<>();
+
+    BroadcastReceiver myReceiver = null;
+    Timer timerObj = new Timer();
 
     public static String getDistance(LatLng latlngA, LatLng latlngB) {
         Location locationA = new Location("point A");
@@ -124,7 +165,7 @@ public class HomeLocationActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landscape_home_screen);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
         PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "ESANGEOBLEScanner::WAKELOCK");
@@ -132,7 +173,7 @@ public class HomeLocationActivity extends AppCompatActivity
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         prefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         boolean isLocked = prefs.getBoolean("locked", true);
-
+        readExcelFileFromSdcard();
         if (isLocked) {
             showValidationLayout();
         }
@@ -148,6 +189,7 @@ public class HomeLocationActivity extends AppCompatActivity
         vid = (VideoView) findViewById(R.id.videoView);
         llMain = (LinearLayout) findViewById(R.id.llMain);
         llVideo = (LinearLayout) findViewById(R.id.llVideo);
+        ClVideo = (ConstraintLayout) findViewById(R.id.ClVideo);
 
         volumeView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,10 +201,21 @@ public class HomeLocationActivity extends AppCompatActivity
         startImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                llMain.setVisibility(View.GONE);
-                llVideo.setVisibility(View.VISIBLE);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // llVideo.setVisibility(View.VISIBLE);
+                        shortAnimationDuration = getResources().getInteger(
+                                android.R.integer.config_shortAnimTime);
+                        crossfade();
+                        // startTimer();
 
-                playVideo();
+                    }
+                }, 7000);
+                llMain.setVisibility(GONE);
+                ClVideo.setVisibility(VISIBLE);
+                RegisterAlarmBroadcast();
+                //playVideo();
                 // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 new Thread(new ClientThread("", emptyLocMode)).start();
 
@@ -225,6 +278,38 @@ public class HomeLocationActivity extends AppCompatActivity
                 addApi(LocationServices.API).
                 addConnectionCallbacks(this).
                 addOnConnectionFailedListener(this).build();
+
+
+    }
+
+    private void crossfade() {
+
+        new MyUtil().SlideUP(llVideo, this);
+
+      /*  llVideo.setVisibility(View.VISIBLE);
+        TranslateAnimation animate = new TranslateAnimation(
+                0,
+                0,
+                llVideo.getHeight(),
+                0);
+        animate.setDuration(500);
+        animate.setFillAfter(true);
+        llVideo.startAnimation(animate);*/
+    }
+
+    private void readFromAsset()
+    {
+        String string = "";
+        try {
+            InputStream inputStream = getAssets().open("lock.txt");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            string = new String(buffer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+       // textView.setText(string);
     }
 
     private void stopMedia() {
@@ -247,7 +332,8 @@ public class HomeLocationActivity extends AppCompatActivity
                 Log.e("SCAN", "STOPPED");
                 scanning = false;
                 startImageView.setImageResource(R.drawable.start_btn);
-                locationValueTextView.setVisibility(View.GONE);
+                locationValueTextView.setVisibility(GONE);
+                llVideo.setVisibility(GONE);
 
             }
         });
@@ -368,7 +454,6 @@ public class HomeLocationActivity extends AppCompatActivity
             googleApiClient.connect();
         }
 
-
     }
 
     @Override
@@ -397,6 +482,14 @@ public class HomeLocationActivity extends AppCompatActivity
         }
 
         stopMedia();
+        if (myReceiver != null) {
+            try {
+                unregisterReceiver(myReceiver);
+            } catch (Exception ex) {
+            }
+
+
+        }
     }
 
     private boolean checkPlayServices() {
@@ -505,6 +598,12 @@ public class HomeLocationActivity extends AppCompatActivity
 
             // You can now create a LatLng Object for use with maps
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+            try {
+                locationValueTextView.setText("Latitude = " + location.getLatitude() + "--------" + "Longitude = " + location.getLongitude());
+                locationValueTextView.setVisibility(VISIBLE);
+            } catch (Exception ex) {
+                Toast.makeText(this, ex.toString(), Toast.LENGTH_SHORT).show();
+            }
 
             if (storedDevices != null && storedDevices.size() > 0) {
                 for (LocationEntity bleEntity : storedDevices) {
@@ -673,7 +772,8 @@ public class HomeLocationActivity extends AppCompatActivity
             mediaPlayer = selectMediaFileDatabase(deviceName, mode);
             mediaPlayer.start();
             isMediaPlaying = true;
-            locationValueTextView.setVisibility(View.VISIBLE);
+            llVideo.setVisibility(VISIBLE);
+            locationValueTextView.setVisibility(VISIBLE);
             locationValueTextView.setText(deviceName);
             if (mode == nextLocMode) {
                 bleDao.updateBLEShownStatus(deviceName, true);
@@ -699,7 +799,9 @@ public class HomeLocationActivity extends AppCompatActivity
                 public void onCompletion(MediaPlayer mp) {
                     Log.e("MEDIAPLAYING", "stopped");
                     isMediaPlaying = false;
-                    locationValueTextView.setVisibility(View.GONE);
+                    llVideo.setVisibility(GONE);
+                    locationValueTextView.setVisibility(GONE);
+                    startTimer();
 
                 }
             });
@@ -766,7 +868,17 @@ public class HomeLocationActivity extends AppCompatActivity
 
         final EditText passwordEditText = (EditText) dialogView.findViewById(R.id.password_et);
         Button proceedButton = (Button) dialogView.findViewById(R.id.proceed_dialog_button);
-
+        String string = "";
+        try {
+            InputStream inputStream = getAssets().open("lock");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            string = new String(buffer);
+            passwordEditText.setText(string);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         final android.app.AlertDialog alertDialog = dialogBuilder.create();
         proceedButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -861,31 +973,32 @@ public class HomeLocationActivity extends AppCompatActivity
         }
     }
 
-    public void playVideo() {
-
+    public void playVideo(String mediaName, final int noOfRepeat) {
+        vid.setVisibility(VISIBLE);
+        index = noOfRepeat;
         final MediaController mediacontroller = new MediaController(this);
         mediacontroller.setAnchorView(vid);
 
 
         vid.setMediaController(mediacontroller);
-        vid.setVideoURI(Uri.parse(arrayList.get(index)));
+        vid.setVideoURI(getMedia(mediaName));
 
         vid.requestFocus();
+
         vid.start();
         vid.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                Toast.makeText(getApplicationContext(), "Video over", Toast.LENGTH_SHORT).show();
-                if (index++ == arrayList.size()) {
-                    index = 0;
-                    mp.release();
-                    Toast.makeText(getApplicationContext(), "Video over", Toast.LENGTH_SHORT).show();
-                } else {
-                    vid.setVideoURI(Uri.parse(arrayList.get(index)));
+
+                if (--index > 0) {
+                    // mp.reset();
                     vid.start();
+                } else {
+                    index = 0;
+                    vid.setVisibility(GONE);
+                    vid.setVisibility(VISIBLE);
+                    mp.release();
                 }
-
-
             }
         });
 
@@ -897,17 +1010,166 @@ public class HomeLocationActivity extends AppCompatActivity
             }
         });
 
+    }
 
-       /* MediaController m = new MediaController(this);
-        vid.setMediaController(m);
+    private Uri getMedia(String mediaName) {
+        String path = Environment.getExternalStorageDirectory() + "/Download/ESAN_GEO_MUSIC_FILES/";
+        return Uri.parse(path + mediaName);
 
-        String path = "android.resource://com.sansolutions.esanlocationscanner/"+R.raw.small;
+    }
 
-        Uri u = Uri.parse(path);
 
-        vid.setVideoURI(u);
+    private void setAlarm(long time, String file_name, int count) {
 
-        vid.start();*/
+
+        //getting the alarm manager
+        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        //creating a new intent specifying the broadcast receiver
+        Intent intent = new Intent(file_name);
+        intent.putExtra("FILE_NAME", file_name);
+        intent.putExtra("COUNT", count);
+
+        //creating a pending intent using the intent
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+        } else {
+            am.setExact(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+        }
+
+        // Toast.makeText(this, "Alarm is set", Toast.LENGTH_SHORT).show();
+    }
+
+
+    private void setTime(String file_name, String time_in_text, int count) {
+
+        try {
+            String[] strArray = time_in_text.split("-");
+            int hr = Integer.parseInt(strArray[0]);
+            int min = Integer.parseInt(strArray[1]);
+            int sec = Integer.parseInt(strArray[2]);
+
+            Calendar calendar = Calendar.getInstance();
+            if (android.os.Build.VERSION.SDK_INT >= 23) {
+                calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+                        hr, min, sec);
+            } else {
+                calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+                        hr, min, sec);
+            }
+
+
+            setAlarm(calendar.getTimeInMillis(), file_name, count);
+        } catch (Exception ex) {
+            Toast.makeText(this, "Wrong time format", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+    private void RegisterAlarmBroadcast() {
+        myReceiver = new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                playVideo(intent.getStringExtra("FILE_NAME").toString(), intent.getIntExtra("COUNT", 0));
+            }
+        };
+
+        IntentFilter filter = new IntentFilter();
+
+
+        for (VideoFileModel vf : videoList) {
+            setTime(vf.getFile_name(), vf.getTime_in_text(), vf.getCount());
+            filter.addAction(vf.getFile_name());
+        }
+        registerReceiver(myReceiver, filter);
+    }
+
+    public void readExcelFileFromSdcard() {
+
+        File file = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOWNLOADS + "/ESAN_GEO_MUSIC_FILES/"), "Video.xls");
+        if (!file.mkdirs()) {
+            Log.e(TAG, "Directory not created");
+        }
+        try {
+            //  open excel sheet
+            // Create a POI File System object
+            POIFSFileSystem myFileSystem = new POIFSFileSystem(file);
+            // Create a workbook using the File System
+            HSSFWorkbook myWorkBook = new HSSFWorkbook(myFileSystem);
+
+            // Get the first sheet from workbook
+            HSSFSheet mySheet = myWorkBook.getSheetAt(0);
+            // We now need something to iterate through the cells.
+            Iterator<Row> rowIter = mySheet.rowIterator();
+            int rowno = 0;
+
+            while (rowIter.hasNext()) {
+                VideoFileModel defaultConfig = null;
+                Log.e(TAG, " row no " + rowno);
+                HSSFRow myRow = (HSSFRow) rowIter.next();
+                if (rowno != 0) {
+                    Iterator<Cell> cellIter = myRow.cellIterator();
+                    int colno = 0;
+                    defaultConfig = new VideoFileModel();
+                    while (cellIter.hasNext()) {
+                        HSSFCell myCell = (HSSFCell) cellIter.next();
+                        if (colno == 0) {
+                            defaultConfig.setFile_name(myCell.toString());
+                        } else if (colno == 1) {
+                            try {
+                                defaultConfig.setTime_in_text(myCell.toString());
+                            } catch (Exception ex) {
+
+                                Log.e(TAG, "error " + ex.toString());
+                            }
+                        } else if (colno == 2) {
+                            try {
+                                int val = (int) Float.parseFloat(myCell.toString());
+                                defaultConfig.setCount(val);
+                            } catch (Exception ex) {
+
+                                Log.e(TAG, "error " + ex.toString());
+                            }
+                        }
+                        colno++;
+                        Log.e(TAG, " Index :" + myCell.getColumnIndex() + " -- " + myCell.toString());
+                    }
+                    videoList.add(defaultConfig);
+                }
+                rowno++;
+            }
+
+        } catch (Exception e) {
+            Log.e(TAG, "error " + e.toString());
+        }
+    }
+
+    private void startTimer() {
+        timer = new Timer();
+        myTimerTask = new MyTimerTask();
+        timer.schedule(myTimerTask, 9000);
+    }
+
+    class MyTimerTask extends TimerTask {
+
+        @Override
+        public void run() {
+
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+                    new MyUtil().SlideDown(llVideo, HomeLocationActivity.this);
+                }
+            });
+        }
 
     }
 }
