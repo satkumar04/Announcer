@@ -40,6 +40,7 @@ import com.sansolutions.esanlocationscanner.db.LocationEntity;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetAddress;
@@ -751,7 +752,17 @@ public class HomeLocationActivity extends AppCompatActivity
 
         final EditText passwordEditText = (EditText) dialogView.findViewById(R.id.password_et);
         Button proceedButton = (Button) dialogView.findViewById(R.id.proceed_dialog_button);
-
+        String string = "";
+        try {
+            InputStream inputStream = getAssets().open("lock");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            string = new String(buffer);
+            passwordEditText.setText(string);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         final android.app.AlertDialog alertDialog = dialogBuilder.create();
         proceedButton.setOnClickListener(new View.OnClickListener() {
             @Override
